@@ -1,7 +1,5 @@
 # Stock Return Prediction via Adaptive Financial Transformer (AFT)
 
-The final compiled publication-quality IEEE research paper is available here:
-👉 **[Download PDF Research Paper](file:///d:/HFT/AdaptiveFinancialTransformerStockReturnPrediction.pdf)**
 
 ---
 
@@ -12,7 +10,7 @@ An interactive visual dashboard, including charts, architectural breakdowns, a f
 
 ---
 
-## 📊 Final Performance Leaderboards (5-Seed Evaluation)
+## Final Performance Leaderboards (5-Seed Evaluation)
 
 To ensure a publication-quality benchmark, both the baseline AFT (Notebook 10.1) and the financially-optimized AFT (Notebook 12.1/13) were evaluated side-by-side across 5 identical random seeds (`[42, 101, 2023, 777, 999]`) using identical train/val/test splits and standard scaling.
 
@@ -23,7 +21,7 @@ To ensure a publication-quality benchmark, both the baseline AFT (Notebook 10.1)
 | **Optimized AFT (Financial)** | 0.0336 ± 0.0023 | 0.0455 ± 0.0023 | -0.1372 ± 0.1171 | **316,319** (-15.2%) |
 | **Baseline AFT (Notebook 10.1)** | **0.0328 ± 0.0031** | **0.0443 ± 0.0028** | **-0.1073 ± 0.1400** | 373,143 |
 
-### 🎯 Trading & Backtesting Leaderboard (Test Set 95% Confidence Intervals)
+### Trading & Backtesting Leaderboard (Test Set 95% Confidence Intervals)
 
 | Model Configuration | Directional Accuracy | Sharpe Ratio | Strategy Return | Max Drawdown |
 | :--- | :---: | :---: | :---: | :---: |
@@ -34,7 +32,7 @@ To ensure a publication-quality benchmark, both the baseline AFT (Notebook 10.1)
 
 ---
 
-## 🔬 Statistical Significance & Research Narrative
+## Statistical Significance & Research Narrative
 
 A paired t-test between the Baseline and Optimized models indicates that the performance differences are not statistically significant at the 95% confidence level (all p-values > 0.20):
 * **MAE p-value:** 0.3790
@@ -46,7 +44,7 @@ In low signal-to-noise ratio settings like stock forecasting, optimization on hi
 
 ---
 
-## 📈 Multi-Stock Robustness Leaderboard (Notebook 14)
+## Multi-Stock Robustness Leaderboard (Notebook 14)
 
 To verify the generalizability of the Adaptive Financial Transformer, we evaluated the model's out-of-sample performance on five additional mega-cap tech assets under standard 0.05% transaction cost friction (period 2018–2024, single seed 42 run).
 
@@ -66,7 +64,7 @@ To verify the generalizability of the Adaptive Financial Transformer, we evaluat
 
 ---
 
-## 🧭 Chronological Notebook Roadmap
+## Chronological Notebook Roadmap
 
 1. **[Notebook 1: Feature Engineering](file:///d:/HFT/01_feature_engineering.ipynb):** Downloads AAPL data and builds 95 features across 11 financial categories.
 2. **[Notebooks 2 - 4: ML & Recurrent Baselines](file:///d:/HFT/03_baseline_models.ipynb):** Sets up Ridge, Random Forest, XGBoost, LSTM, and GRU models.
@@ -82,7 +80,7 @@ To verify the generalizability of the Adaptive Financial Transformer, we evaluat
 
 ---
 
-## ⚙️ AFT Model Architecture
+## AFT Model Architecture
 
 ```
                   Raw Features (95 Dimensions)
