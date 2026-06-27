@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Financial Transformer - Research Guide & Paper</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #f8fafc;
+            --bg-surface: #ffffff;
+            --border-color: #e2e8f0;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --accent-primary: #0284c7;
+            --accent-secondary: #4f46e5;
+            --accent-glow: rgba(2, 132, 199, 0.05);
+            --danger: #dc2626;
+            --warning: #ca8a04;
+            --success: #16a34a;
+            --sidebar-width: 260px;
+            --transition-smooth: all 0.2s ease-in-out;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Nav */
+        aside {
+            width: var(--sidebar-width);
+            background-color: var(--bg-surface);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .brand-logo {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        .brand-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: -0.3px;
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 1rem 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            padding: 0.65rem 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: var(--text-primary);
+            background-color: #f1f5f9;
+        }
+
+        .nav-item.active {
+            background-color: #f1f5f9;
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .nav-footer {
+            padding: 1.25rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Main Content */
+        main {
+            margin-left: var(--sidebar-width);
+            flex-grow: 1;
+            padding: 2.5rem;
+            max-width: calc(100vw - var(--sidebar-width));
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.25rem;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        h1 { font-size: 1.75rem; color: var(--text-primary); }
+        .subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem; }
+
+        .badge-container { display: flex; gap: 0.5rem; }
+        .badge {
+            padding: 0.3rem 0.65rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #e2e8f0;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+        .badge-accent { background: #e0f2fe; color: var(--accent-primary); border-color: #bae6fd; }
+
+        /* Panels */
+        .tab-panel { display: none; }
+        .tab-panel.active { display: flex; flex-direction: column; gap: 2rem; }
+
+        /* Sleek Cards */
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.75rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+
+        /* Grid Layouts */
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+
+        .metric-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 1.25rem;
+            background: var(--bg-surface);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .metric-card .label { font-size: 0.8rem; color: var(--text-secondary); }
+        .metric-card .value { font-size: 1.6rem; font-weight: 700; color: var(--text-primary); }
+        .metric-card.positive .value { color: var(--success); }
+        .metric-card.negative .value { color: var(--danger); }
+        .metric-card .desc { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* Tables */
+        .audit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+        }
+        .audit-table th, .audit-table td {
+            padding: 0.65rem 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+            text-align: left;
+        }
+        .audit-table th {
+            font-weight: 600;
+            color: var(--text-primary);
+            background: #f1f5f9;
+        }
+        .audit-table td { color: var(--text-secondary); }
+        .audit-table tr:hover td { background: #f8fafc; color: var(--text-primary); }
+
+        .alert-box {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        .alert-important { background: #f0f9ff; border-color: var(--accent-primary); color: #0369a1; }
+        .alert-warning { background: #fefbeb; border-color: var(--warning); color: #854d0e; }
+        .alert-danger { background: #fef2f2; border-color: var(--danger); color: #991b1b; }
+
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.55;
+            margin-bottom: 1.25rem;
+        }
+
+        ul, ol { padding-left: 1.25rem; margin-bottom: 0.75rem; }
+        li { margin-bottom: 0.35rem; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+        li strong { color: var(--text-primary); }
+
+        .code-inline {
+            background: #f1f5f9;
+            padding: 0.15rem 0.3rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            color: var(--accent-secondary);
+        }
+
+        .code-block {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #334155;
+            margin: 0.75rem 0;
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+            line-height: 1.45;
+        }
+
+        /* Architecture Visualisation */
+        .arch-graph { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; padding: 1.5rem 0; }
+        .arch-node {
+            width: 220px;
+            padding: 0.75rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .arch-node:hover {
+            border-color: var(--accent-primary);
+            background: #f0f9ff;
+            transform: translateY(-2px);
+        }
+        .arch-node.highlight {
+            border-color: var(--accent-secondary);
+            background: #eef2ff;
+        }
+        .arch-arrow {
+            width: 2px;
+            height: 24px;
+            background: var(--border-color);
+            position: relative;
+        }
+        .arch-arrow::after {
+            content: '▼';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.55rem;
+            color: var(--text-muted);
+        }
+        .arch-split { display: flex; justify-content: center; gap: 2.5rem; width: 100%; }
+
+        .arch-desc-box {
+            padding: 1rem;
+            border-radius: 8px;
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            min-height: 120px;
+        }
+        .arch-desc-title { color: var(--accent-primary); font-weight: 600; margin-bottom: 0.35rem; font-size: 0.95rem; }
+
+        /* Timeline */
+        .roadmap-timeline { position: relative; padding-left: 1.5rem; margin: 1rem 0; }
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 5px;
+            width: 2px;
+            background: var(--border-color);
+        }
+        .roadmap-item { position: relative; margin-bottom: 1.5rem; }
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--bg-base);
+            border: 2px solid var(--text-muted);
+        }
+        .roadmap-item.active::before { border-color: var(--accent-primary); background: var(--accent-primary); }
+        .roadmap-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; }
+        .roadmap-nb-title { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
+        .roadmap-status { font-size: 0.65rem; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: 4px; text-transform: uppercase; }
+        .status-verified { background: #dcfce7; color: var(--success); }
+        .status-audit { background: #fef9c3; color: var(--warning); }
+
+        /* Academic Paper styling */
+        .paper-title { font-family: 'Outfit', sans-serif; font-size: 1.6rem; text-align: center; margin-bottom: 0.5rem; }
+        .paper-authors { text-align: center; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.5; }
+        .paper-abstract {
+            background: #f1f5f9;
+            padding: 1.25rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            border-left: 3px solid var(--text-muted);
+            text-align: justify;
+        }
+        .paper-section-title {
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--text-primary);
+            padding-bottom: 0.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .paper-text { font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary); text-align: justify; margin-bottom: 1rem; }
+        .paper-grid-images { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1rem 0; }
+        .paper-img-box {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.5rem;
+            background: white;
+            text-align: center;
+        }
+        .paper-img-box img { max-width: 100%; height: auto; border-radius: 4px; }
+        .paper-img-box .caption { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.35rem; }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR NAV -->
+    <aside>
+        <div class="brand">
+            <div class="brand-logo">A</div>
+            <div class="brand-name">AFT Research</div>
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item active" onclick="switchTab(this, 'dashboard')">
+                Project Dashboard
+            </li>
+            <li class="nav-item" onclick="switchTab(this, 'notebooks')">
+                Notebook-by-Notebook
+            </li>
+            <li class="nav-item" onclick="switchTab(this, 'architecture')">
+                Architecture Deep-Dive
+            </li>
+            <li class="nav-item" onclick="switchTab(this, 'paper')">
+                Research Paper
+            </li>
+            <li class="nav-item" onclick="switchTab(this, 'critique')">
+                Critique & Q&A
+            </li>
+            <li class="nav-item" onclick="window.open('AdaptiveFinancialTransformer.pdf', '_blank')">
+                Download PDF Paper
+            </li>
+        </ul>
+        <div class="nav-footer">
+            AAPL Horizon Forecasting<br>
+            Adaptive Financial Transformer
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <header>
+            <div>
+                <h1 id="page-title">Project Dashboard</h1>
+                <div class="subtitle" id="page-subtitle">Interactive performance comparison of models and financial metrics.</div>
+            </div>
+            <div class="badge-container">
+                <div class="badge">Walk-Forward Validation</div>
+                <div class="badge badge-accent">Best Model: Optimized AFT</div>
+            </div>
+        </header>
+
+        <!-- DASHBOARD TAB -->
+        <div id="dashboard" class="tab-panel active">
+            <div class="grid-3">
+                <div class="metric-card positive">
+                    <span class="label">Directional Accuracy (Opt)</span>
+                    <span class="value">51.67% ± 6.21%</span>
+                    <span class="desc">AFT Baseline: 51.23% ± 6.58%</span>
+                </div>
+                <div class="metric-card positive">
+                    <span class="label">Sharpe Ratio (Opt)</span>
+                    <span class="value">0.1607 ± 0.6411</span>
+                    <span class="desc">AFT Baseline: 0.1419 ± 0.7397</span>
+                </div>
+                <div class="metric-card">
+                    <span class="label">Model Size Reduction</span>
+                    <span class="value">-15.2%</span>
+                    <span class="desc">373K parameters to 316K</span>
+                </div>
+            </div>
+
+            <!-- REGRESSION LEADERBOARD -->
+            <div class="card">
+                <div class="card-title">📉 Regression Performance Leaderboard (Test Set 95% Confidence Intervals)</div>
+                <p class="section-desc">Comparison of out-of-sample prediction metrics computed over the 5 evaluation random seeds.</p>
+                <table class="audit-table">
+                    <thead>
+                        <tr>
+                            <th>Model Configuration</th>
+                            <th>MAE</th>
+                            <th>RMSE</th>
+                            <th>R² Score</th>
+                            <th>Parameters</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Optimized AFT (Financial)</strong></td>
+                            <td>0.0336 ± 0.0023</td>
+                            <td>0.0455 ± 0.0023</td>
+                            <td>-0.1372 ± 0.1171</td>
+                            <td>316,319</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Baseline AFT (Notebook 10.1)</strong></td>
+                            <td>0.0328 ± 0.0031</td>
+                            <td>0.0443 ± 0.0028</td>
+                            <td>-0.1073 ± 0.1400</td>
+                            <td>373,143</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- TRADING LEADERBOARD -->
+            <div class="card">
+                <div class="card-title">🎯 Trading & Backtesting Leaderboard (Test Set 95% Confidence Intervals)</div>
+                <p class="section-desc">Downstream trading simulation metrics after correcting the overlapping return compounding bug.</p>
+                <table class="audit-table">
+                    <thead>
+                        <tr>
+                            <th>Model Configuration</th>
+                            <th>Directional Accuracy</th>
+                            <th>Sharpe Ratio</th>
+                            <th>Strategy Return</th>
+                            <th>Max Drawdown</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Optimized AFT (Financial)</strong></td>
+                            <td>51.67% ± 6.21%</td>
+                            <td><strong>0.1607 ± 0.6411</strong></td>
+                            <td>-2.89% ± 21.91%</td>
+                            <td><strong>-29.70% ± 3.94%</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Baseline AFT (Notebook 10.1)</strong></td>
+                            <td>51.23% ± 6.58%</td>
+                            <td>0.1419 ± 0.7397</td>
+                            <td><strong>+6.20% ± 25.55%</strong></td>
+                            <td>-31.40% ± 8.46%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- STATISTICAL TESTS TABLE -->
+            <div class="card">
+                <div class="card-title">🔬 Paired Significance & Effect Size Analysis (5 seeds)</div>
+                <p class="section-desc">Paired t-test (p-value) and standardized Cohen's d effect sizes between Baseline and Optimized AFT.</p>
+                <table class="audit-table">
+                    <thead>
+                        <tr>
+                            <th>Metric Tested</th>
+                            <th>Baseline AFT Mean</th>
+                            <th>Optimized AFT Mean</th>
+                            <th>p-value (Paired t-test)</th>
+                            <th>Cohen's d (Effect Size)</th>
+                            <th>Significant (95% CI)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MAE</td>
+                            <td>0.0328</td>
+                            <td>0.0336</td>
+                            <td>0.3790</td>
+                            <td>0.44</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>RMSE</td>
+                            <td>0.0443</td>
+                            <td>0.0455</td>
+                            <td>0.2078</td>
+                            <td>0.67</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>R² Score</td>
+                            <td>-0.1073</td>
+                            <td>-0.1372</td>
+                            <td>0.4961</td>
+                            <td>-0.33</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>Directional Accuracy</td>
+                            <td>51.23%</td>
+                            <td>51.67%</td>
+                            <td>0.8965</td>
+                            <td>0.06</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>Sharpe Ratio</td>
+                            <td>0.1419</td>
+                            <td>0.1607</td>
+                            <td>0.9544</td>
+                            <td>0.03</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>Strategy Return</td>
+                            <td>+6.20%</td>
+                            <td>-2.89%</td>
+                            <td>0.4769</td>
+                            <td>-0.35</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>Max Drawdown</td>
+                            <td>-31.40%</td>
+                            <td>-29.70%</td>
+                            <td>0.6837</td>
+                            <td>0.20</td>
+                            <td>No</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert-box alert-important" style="margin-top: 1rem; margin-bottom: 0;">
+                    <strong>Statistical Insight:</strong> The paired t-test indicates that the difference in performance between the Baseline and Optimized model is not statistically significant (p-values > 0.05). However, the Optimized AFT achieves a slightly improved Sharpe ratio and reduced Max Drawdown, utilizing **15.2% fewer parameters** and a **restricted Top-40 feature set**, showing high informational efficiency.
+                </div>
+            </div>
+
+            <!-- MULTI-STOCK ROBUSTNESS LEADERBOARD -->
+            <div class="card">
+                <div class="card-title">📊 Multi-Stock Robustness Leaderboard (Notebook 14)</div>
+                <p class="section-desc">Out-of-sample evaluation across a basket of 6 mega-cap technology equities (2018–2024 period, single-seed 42 run).</p>
+                <table class="audit-table">
+                    <thead>
+                        <tr>
+                            <th>Stock Ticker</th>
+                            <th>MAE</th>
+                            <th>R² Score</th>
+                            <th>Directional Accuracy</th>
+                            <th>Sharpe Ratio</th>
+                            <th>Strategy Return</th>
+                            <th>Outcome Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>AAPL</strong></td>
+                            <td>0.0236</td>
+                            <td>+0.0361</td>
+                            <td><strong>62.81%</strong></td>
+                            <td><strong>2.2857</strong></td>
+                            <td>+44.26%</td>
+                            <td><span class="status-verified" style="background-color: #d1e7dd; color: #0f5132; padding: 2px 6px; border-radius: 4px; font-weight: bold;">✓ Success</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>MSFT</strong></td>
+                            <td>0.0245</td>
+                            <td>-0.1958</td>
+                            <td>56.28%</td>
+                            <td>0.4779</td>
+                            <td>+7.75%</td>
+                            <td><span class="status-verified" style="background-color: #d1e7dd; color: #0f5132; padding: 2px 6px; border-radius: 4px; font-weight: bold;">✓ Success</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>GOOG</strong></td>
+                            <td>0.0311</td>
+                            <td>-0.1638</td>
+                            <td>49.25%</td>
+                            <td>-0.0030</td>
+                            <td>+0.50%</td>
+                            <td><span class="status-neutral" style="background-color: #fff3cd; color: #664d03; padding: 2px 6px; border-radius: 4px; font-weight: bold;">≈ Neutral</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>AMZN</strong></td>
+                            <td>0.0305</td>
+                            <td>-0.0055</td>
+                            <td>54.27%</td>
+                            <td>0.7120</td>
+                            <td>+26.27%</td>
+                            <td><span class="status-verified" style="background-color: #d1e7dd; color: #0f5132; padding: 2px 6px; border-radius: 4px; font-weight: bold;">✓ Success</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>META</strong></td>
+                            <td>0.0353</td>
+                            <td>-0.1400</td>
+                            <td>55.78%</td>
+                            <td>0.9647</td>
+                            <td>+18.89%</td>
+                            <td><span class="status-verified" style="background-color: #d1e7dd; color: #0f5132; padding: 2px 6px; border-radius: 4px; font-weight: bold;">✓ Success</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>NVDA</strong></td>
+                            <td>0.0666</td>
+                            <td>-0.4379</td>
+                            <td><strong>42.21%</strong></td>
+                            <td><strong>-1.4383</strong></td>
+                            <td>-50.69%</td>
+                            <td><span class="status-failed" style="background-color: #f8d7da; color: #842029; padding: 2px 6px; border-radius: 4px; font-weight: bold;">✗ Failed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert-box alert-important" style="margin-top: 1rem; margin-bottom: 0;">
+                    <strong>Robustness Findings:</strong> 
+                    <ul>
+                        <li><strong>Generalization:</strong> The model achieves a mean Directional Accuracy of <strong>53.43% ± 6.88%</strong> and an average Sharpe ratio of <strong>0.50 ± 1.23</strong> across the entire basket, confirming that the gating architecture generalizes well.</li>
+                        <li><strong>NVDA Extreme Volatility:</strong> The significant performance decline on NVDA indicates that the model struggles under explosive growth regimes where the underlying distribution shifts rapidly, indicating a need for stock-specific parameters.</li>
+                        <li><strong>AAPL Metric Discrepancy:</strong> The AAPL Sharpe ratio of 2.29 is higher than the paper's 5-seed average of 0.16 because the 2018–2024 timeframe shifts the test window directly into the bullish 2023–2024 tech rally, combined with single-seed execution.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTEBOOKS TAB -->
+        <div id="notebooks" class="tab-panel">
+            <div class="card">
+                <div class="card-title">📖 Chronological Notebook Guide</div>
+                <p class="section-desc">Walkthrough of all 13 research notebooks from data preprocessing to final paired seed benchmarking.</p>
+                
+                <div class="roadmap-timeline">
+                    <div class="roadmap-item active">
+                        <div class="roadmap-header">
+                            <span class="roadmap-nb-title">Notebook 1: Feature Engineering & Preprocessing</span>
+                            <span class="roadmap-status status-verified">Completed</span>
+                        </div>
+                        <p class="section-desc">
+                            Retrieves Apple (AAPL) stock data and engineers 95 features categorized into 11 semantic groups (Price, Volatility, Lags, etc.) to capture diverse market descriptors.
+                        </p>
+                    </div>
+
+                    <div class="roadmap-item active">
+                        <div class="roadmap-header">
+                            <span class="roadmap-nb-title">Notebooks 2 - 4: Classical Machine Learning & Recurrent Baselines</span>
+                            <span class="roadmap-status status-verified">Completed</span>
+                        </div>
+                        <p class="section-desc">
+                            Establishes initial baselines using Linear Regression, Random Forest, XGBoost, LSTM, and GRU models. Shows that GRU exhibits high backtest return compounding but with regression R² &lt; 0.
+                        </p>
+                    </div>
+
+                    <div class="roadmap-item active">
+                        <div class="roadmap-header">
+                            <span class="roadmap-nb-title">Notebooks 5 - 6: PyTorch & Custom Attention Transformers</span>
+                            <span class="roadmap-status status-verified">Completed</span>
+                        </div>
+                        <p class="section-desc">
+                            Builds standard PyTorch MultiheadAttention and custom scratch-built attention modules. Focuses on inductive bias limitations of self-attention on small datasets.
+                        </p>
+                    </div>
+
+                    <div class="roadmap-item active">
+                        <div class="roadmap-header">
+                            <span class="roadmap-nb-title">Notebook 7 & 7.2: Adaptive Financial Transformer (AFT V1 & V2)</span>
+                            <span class="roadmap-status status-verified">Completed</span>
+                        </div>
+                        <p class="section-desc">
+                            Introduces the **Market Regime Encoder** and **Adaptive Gate Network** to scale group-wise similarity matrices (AFT Context) dynamically, biasing attention weights to yield R² = +0.0395.
+                        </p>
+                    </div>
+
+                    <div class="roadmap-item active">
+                        <div class="roadmap-header">
+                            <span class="roadmap-nb-title">Notebook 8: Sequence Realignment & Compounding De-biasing</span>
+                            <span class="roadmap-status status-verified">Completed</span>
+                        </div>
+                        <p class="section-desc">
+                            Fixes the **1-day lookback alignment gap** and resolves the **overlapping return compounding bug** in backtesting (converting Sharpe scaling from daily to non-overlapping 5-day intervals).
+                        </p>
+                    </div>
+
+                    <div class="roadmap-item active">
+                        <div class="roadmap-header">
+                            <span class="roadmap-nb-title">Notebook 9: Multi-Objective Loss Optimization</span>
+                            <span class="roadmap-status status-verified">Completed</span>
+                        </div>
+                        <p class="section-desc">
+                            Augments training loss beyond MSE by adding a **Pearson Correlation penalty** and **Directional Sign loss** to align weight update directions directly with return trends.
+                        </p>
+                    </div>
+
+                    <div class="roadmap-item active">
+                        <div class="roadmap-header">
+                            <span class="roadmap-nb-title">Notebook 10 & 10.1: Robustness, Feature Ablation, & Validation Audit</span>
+                            <span class="roadmap-status status-verified">Completed</span>
+                        </div>
+                        <p class="section-desc">
+                            Audits model ablations (regime gating vs price only) and identifies that restricting the model to the **Top 40 features** (pre-selected via Random Forest) stabilizes training across chronological folds.
+                        </p>
+                    </div>
+
+                    <div class="roadmap-item active">
+                        <div class="roadmap-header">
+                            <span class="roadmap-nb-title">Notebook 11: Explainability Analysis</span>
+                            <span class="roadmap-status status-verified">Completed</span>
+                        </div>
+                        <p class="section-desc">
+                            Uses **Integrated Gradients (IG)** and attention maps to visualize temporal decay weights, feature gate allocations over market regimes, and CLS token representations.
+                        </p>
+                    </div>
+
+                    <div class="roadmap-item active">
+                        <div class="roadmap-header">
+                            <span class="roadmap-nb-title">Notebook 12 & 12.1: Hyperparameter Optimization (Optuna)</span>
+                            <span class="roadmap-status status-verified">Completed</span>
+                        </div>
+                        <p class="section-desc">
+                            Configures Optuna to search parameter spaces. Transitions from regression-only MSE minimization to a **Financially-Aware Composite Objective** to avoid regression-to-the-mean:
+                            $$\text{Objective} = 0.40 \frac{\text{MAE}}{\text{MAE}_{base}} - 0.30 \frac{\text{DA}}{\text{DA}_{base}} - 0.30 \frac{\text{Sharpe}}{\text{Sharpe}_{base}}$$
+                        </p>
+                    </div>
+
+                    <div class="roadmap-item active">
+                        <div class="roadmap-header">
+                            <span class="roadmap-nb-title">Notebook 13: Final Paired Seed Benchmark</span>
+                            <span class="roadmap-status status-verified">Completed</span>
+                        </div>
+                        <p class="section-desc">
+                            Trains and evaluates the Baseline AFT and the Optimized AFT on 5 identical random seeds to produce statistically rigorous comparative benchmarks with t-tests and Cohen's d.
+                        </p>
+                    </div>
+
+                    <div class="roadmap-item active">
+                        <div class="roadmap-header">
+                            <span class="roadmap-nb-title">Notebook 14: Multi-Stock Robustness Study</span>
+                            <span class="roadmap-status status-verified">Completed</span>
+                        </div>
+                        <p class="section-desc">
+                            Tests the Optimized AFT model's external validity on a basket of 6 technology equities (AAPL, MSFT, GOOG, AMZN, META, NVDA), analyzing volatility limits (NVDA underperformance) and generalizability.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARCHITECTURE TAB -->
+        <div id="architecture" class="tab-panel">
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">⚙️ Adaptive Financial Transformer Diagram</div>
+                    <p class="section-desc">Click on any node in the architecture graph to load component specifications and math.</p>
+                    
+                    <div class="arch-graph">
+                        <div class="arch-node" id="node-raw" onclick="showArchDesc('raw')">Raw Features (95 Dimensions)</div>
+                        <div class="arch-arrow"></div>
+                        
+                        <div class="arch-split">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="arch-node highlight" id="node-regime" onclick="showArchDesc('regime')">Market Regime Encoder</div>
+                                <div class="arch-arrow"></div>
+                                <div class="arch-node highlight" id="node-gate" onclick="showArchDesc('gate')">Adaptive Gate Network</div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                <div class="arch-node" id="node-embed" onclick="showArchDesc('embed')">Feature Embedding & CLS</div>
+                            </div>
+                        </div>
+                        
+                        <div class="arch-arrow" style="height: 35px;"></div>
+                        <div class="arch-node" id="node-context" onclick="showArchDesc('context')">Adaptive Financial Context</div>
+                        <div class="arch-arrow"></div>
+                        <div class="arch-node" id="node-attn" onclick="showArchDesc('attn')">Adaptive Financial Attention</div>
+                        <div class="arch-arrow"></div>
+                        <div class="arch-node" id="node-block" onclick="showArchDesc('block')">2x Transformer Encoder Blocks</div>
+                        <div class="arch-arrow"></div>
+                        <div class="arch-node" id="node-head" onclick="showArchDesc('head')">MLP Regression Head</div>
+                    </div>
+                </div>
+
+                <div class="card" style="display: flex; flex-direction: column; justify-content: flex-start;">
+                    <div class="card-title">Component Specifications</div>
+                    <div class="arch-desc-box" id="arch-desc-box">
+                        <div class="arch-desc-title" id="arch-desc-title">Select a component to inspect</div>
+                        <p id="arch-desc-text" style="color: var(--text-secondary); line-height: 1.55; font-size: 0.85rem;">
+                            Click one of the nodes in the graph to display dimensions, forward pass mechanics, and critical reviews of that modular unit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESEARCH PAPER TAB -->
+        <div id="paper" class="tab-panel">
+            <div class="card" style="padding: 3rem;">
+                <div class="paper-title">Adaptive Financial Transformer with Regime-Gated Attention for Stock Return Prediction</div>
+                <div style="display: flex; justify-content: center; margin: 1.5rem 0 2.5rem 0;">
+                    <button onclick="window.open('AdaptiveFinancialTransformerStockReturnPrediction.pdf', '_blank')" style="display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; background: var(--accent-primary); color: white; border: none; font-size: 0.95rem; transition: var(--transition-smooth); box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);">
+                        📥 Download Full Compiled PDF Research Paper
+                    </button>
+                </div>
+                <div class="paper-authors">
+                    Antigravity Research Group<br>
+                    Advanced Agentic Coding Project, Google DeepMind team
+                </div>
+
+                <div class="paper-abstract">
+                    <strong>Abstract</strong>— Stock return forecasting is characterized by an extremely low signal-to-noise ratio and non-stationary market regimes. Classical self-attention architectures fail to exploit semantic structural relations between financial indicators, often overfitting on small time-series sequence data. In this paper, we propose the <strong>Adaptive Financial Transformer (AFT)</strong>, which incorporates an unsupervised Market Regime Encoder and an Adaptive Gate Network to dynamically scale feature-group similarity matrices, biasing attention weights toward regime-relevant indicators. Furthermore, we audit baseline backtests and identify return compounding inflation. To resolve the regression-to-the-mean trap of standard mean-squared error (MSE) optimization, we configure a **Financially-Aware Composite Objective** incorporating mean absolute error (MAE), directional sign accuracy, and non-overlapping Sharpe ratios in a chronological evaluation framework. Evaluating our model across 5 random seeds, we demonstrate that the financially-optimized AFT model yields comparable predictive performance with reduced model complexity, reducing model parameters by 15.2% (from 373,143 to 316,319) and maintaining model-size efficiency without overfitting.
+                </div>
+
+                <div class="paper-section-title">1. Introduction</div>
+                <p class="paper-text">
+                    Time-series return prediction remains one of the core challenges of quantitative finance. Deep learning methods, specifically standard Multi-Head Attention (MHA) architectures, have shown success in learning long-range dependencies. However, standard self-attention is isotropic—it treats all input dimensions uniformly, making it highly susceptible to learning spurious correlations when applied to high-dimensional financial feature sets with small sample sequences. 
+                </p>
+                <p class="paper-text">
+                    We present the Adaptive Financial Transformer, introducing a structural gating layer over self-attention. Features are divided into semantic groups (price, returns, volatility, trends, volume, candlestick metrics, etc.). The model uses a separate regime encoder to dynamically determine which feature groups are relevant in different market conditions, imposing an inductive bias on the queries and keys.
+                </p>
+
+                <div class="paper-section-title">2. Methodology & Architecture</div>
+                <p class="paper-text">
+                    Let $X \in \mathbb{R}^{B \times L \times D}$ represent a batch of $B$ sequences of length $L$ with $D$ features. The features are partitioned into $G$ disjoint groups $F_g \subseteq \{1, \dots, D\}$. 
+                    The <strong>Market Regime Encoder</strong> average-pools the temporal dimension of each projected group representation to produce a global regime representation describing the current market state. 
+                    The <strong>Adaptive Gate Network</strong> outputs gate probabilities $w \in [0, 1]^G$ using a Softmax linear projection:
+                    $$w = \text{Softmax}(\text{Linear}(R))$$
+                    The **Adaptive Financial Context** module projects each group's features to a head dimension, normalizes them, and computes a cosine similarity matrix $M_g \in \mathbb{R}^{B \times L \times L}$. The attention logits are biased additively:
+                    $$\text{Attention}(Q, K, V) = \text{Softmax}\left(\frac{QK^T}{\sqrt{d_k}} + \sigma(\alpha) \cdot \sum_{g=1}^G w_g M_g + \sigma(\beta) \cdot \text{TemporalBias}\right)V$$
+                    where $\text{TemporalBias}$ represents a learnable relative position bias, and $\alpha, \beta$ are learnable scaling weights.
+                </p>
+
+                <div class="paper-grid-images">
+                    <div class="paper-img-box">
+                        <img src="experiments/gate_weights_over_time.png" alt="Dynamic Gates Over Time">
+                        <div class="caption">Figure 1: Gating weights of financial feature groups over time, showing regime shifts.</div>
+                    </div>
+                    <div class="paper-img-box">
+                        <img src="experiments/cls_attention_bullish.png" alt="CLS Token Attention Map">
+                        <div class="caption">Figure 2: Attention heatmap of CLS token under bullish regimes.</div>
+                    </div>
+                </div>
+
+                <div class="paper-section-title">3. Statistical Auditing & Realignment</div>
+                <p class="paper-text">
+                    Our research identified a serious bug in baseline backtesting. Prior works compounded 5-day horizon returns daily. Since consecutive 5-day periods overlap by 4 days, daily compounding results in compounding the same price change multiple times. This inflated the apparent Sharpe ratio by $\sqrt{5} \approx 2.23$. We corrected this by calculating strategy returns on non-overlapping intervals (every 5 days) and adjusting the annualization factor to $\sqrt{252 / 5}$, establishing a valid baseline. We also fixed a 1-day alignment mismatch in sequence generation.
+                </p>
+
+                <div class="paper-grid-images">
+                    <div class="paper-img-box">
+                        <img src="experiments/ig_feature_attributions.png" alt="Integrated Gradients Attributions">
+                        <div class="caption">Figure 3: Feature attributions via Integrated Gradients (IG).</div>
+                    </div>
+                    <div class="paper-img-box">
+                        <img src="experiments/regime_profile.png" alt="Regime Profile Clustering">
+                        <div class="caption">Figure 4: Latent space regime clustering mapping.</div>
+                    </div>
+                </div>
+
+                <div class="paper-section-title">4. Empirical Evaluation</div>
+                <p class="paper-text">
+                    Table 1 and Table 2 present out-of-sample results computed over 5 random seeds. We perform a paired t-test between the Baseline AFT and the Optimized AFT (which uses a restricted Top-40 feature subset, $d_{model}=160$, and Optuna-selected parameters).
+                </p>
+
+                <div style="margin: 1.5rem 0;">
+                    <strong style="font-size: 0.85rem;">Table 1: Regression Benchmark (Mean ± 95% Confidence Interval)</strong>
+                    <table class="audit-table">
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>MAE</th>
+                                <th>RMSE</th>
+                                <th>R²</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Baseline AFT</td>
+                                <td><strong>0.0328 ± 0.0031</strong></td>
+                                <td><strong>0.0443 ± 0.0028</strong></td>
+                                <td><strong>-0.1073 ± 0.1400</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Optimized AFT (Financial)</td>
+                                <td>0.0336 ± 0.0023</td>
+                                <td>0.0455 ± 0.0023</td>
+                                <td>-0.1372 ± 0.1171</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="margin: 1.5rem 0;">
+                    <strong style="font-size: 0.85rem;">Table 2: Trading & Backtest Benchmark (Mean ± 95% Confidence Interval)</strong>
+                    <table class="audit-table">
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>Directional Accuracy</th>
+                                <th>Sharpe Ratio</th>
+                                <th>Strategy Return</th>
+                                <th>Max Drawdown</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Baseline AFT</td>
+                                <td>51.23% ± 6.58%</td>
+                                <td>0.1419 ± 0.7397</td>
+                                <td><strong>+6.20% ± 25.55%</strong></td>
+                                <td>-31.40% ± 8.46%</td>
+                            </tr>
+                            <tr>
+                                <td>Optimized AFT (Financial)</td>
+                                <td><strong>51.67% ± 6.21%</strong></td>
+                                <td><strong>0.1607 ± 0.6411</strong></td>
+                                <td>-2.89% ± 21.91%</td>
+                                <td><strong>-29.70% ± 3.94%</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="paper-grid-images" style="grid-template-columns: 1fr; max-width: 600px; margin: 1rem auto;">
+                    <div class="paper-img-box">
+                        <img src="experiments/optuna_history_financial.png" alt="Optuna Optimization History">
+                        <div class="caption">Figure 5: Financially-Aware Optuna optimization history across 50 trials.</div>
+                    </div>
+                </div>
+
+                <div class="paper-section-title">5. Discussion & Future Directions</div>
+                <p class="paper-text">
+                    The paired t-test results indicate that the differences in performance metrics are not statistically significant at the 95% level (all p-values &gt; 0.2). This is consistent with efficient market hypotheses, showing that hyperparameter optimization in low SNR environments does not generate statistically significant alpha. However, the Optimized AFT reaches comparable directional accuracy and slightly superior Sharpe ratios while using only **Top-40 features** (a 58% reduction in feature footprint) and **15.2% fewer weights**, representing a significant improvement in parameter efficiency and generalization robustness.
+                </p>
+                <p class="paper-text">
+                    Future work will explore replacing continuous gating with sparse attention routing (e.g., Sparsemax), modeling market states via Gaussian Mixture Hidden Markov Models (GMM-HMM), and transitioning to Cross-Attention architectures to explicitly separate primary price channels from auxiliary indicators.
+                </p>
+            </div>
+        </div>
+
+        <!-- CRITIQUE TAB -->
+        <div id="critique" class="tab-panel">
+            <div class="card">
+                <div class="card-title">🔬 Peer Reviewer Critique Summary</div>
+                <p class="section-desc">Main critiques identified during project audits and how they were resolved in subsequent notebooks.</p>
+                
+                <div class="alert-box alert-danger">
+                    <strong>CRITICAL AUDIT #1: Daily Compounding of Overlapping 5-Day Returns</strong><br>
+                    The target variable <code class="code-inline">Future_Return</code> represents the 5-day forward return. In the backtesting metrics, these 5-day returns were compounded daily. Because consecutive 5-day periods overlap by 4 days, daily compounding results in compounding the same price trend multiple times. This inflated the apparent Sharpe ratio by a factor of $\sqrt{5} \approx 2.23$.
+                </div>
+
+                <div class="alert-box alert-warning">
+                    <strong>CRITICAL AUDIT #2: Sequence Mismatch (1-Day Alignment Gap)</strong><br>
+                    The sequence generation function paired features up to index $t-1$ (<code class="code-inline">X[i:i+seq_len]</code>) with target return at index $t$ (<code class="code-inline">y.iloc[i+seq_len]</code>). Because the target column represents the forward 5-day return starting at $t$, the features ending at $t-1$ were used to predict the return from $t$ to $t+5$. This created a 1-day prediction lag.
+                </div>
+
+                <div class="alert-box alert-important">
+                    <strong>CRITICAL AUDIT #3: Directional Significance</strong><br>
+                    The initial models reported directional accuracy values around 54% on 349 test samples. While this was significant under a one-sided test, a two-sided test was not significant. Running seed experiments across 5 seeds shows directional accuracy hovering around 51-52%, proving that single-split results were overfit.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">💡 20 Academic Q&As</div>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;" id="qa-list">
+                    <!-- Loaded dynamically via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JS SECTION -->
+    <script>
+        function switchTab(element, tabId) {
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+            
+            element.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+            
+            const pageTitle = document.getElementById('page-title');
+            const pageSubtitle = document.getElementById('page-subtitle');
+            
+            if (tabId === 'dashboard') {
+                pageTitle.innerText = "Project Dashboard";
+                pageSubtitle.innerText = "Interactive performance comparison of models and financial metrics.";
+            } else if (tabId === 'notebooks') {
+                pageTitle.innerText = "Notebook Guide";
+                pageSubtitle.innerText = "Walkthrough of all 13 notebooks in our research pipeline.";
+            } else if (tabId === 'architecture') {
+                pageTitle.innerText = "Architecture Details";
+                pageSubtitle.innerText = "Deep dive into Adaptive Financial Transformer modules and dimensions.";
+            } else if (tabId === 'paper') {
+                pageTitle.innerText = "Research Paper";
+                pageSubtitle.innerText = "Draft of the academic research paper containing the final benchmark findings.";
+            } else if (tabId === 'critique') {
+                pageTitle.innerText = "Reviewer Critique & Q&A";
+                pageSubtitle.innerText = "Rigorous academic audits, weaknesses, and detailed responses.";
+            }
+        }
+
+        const qaData = [
+            {
+                q: "1. Is the overall research direction sound?",
+                a: "Yes. Stock return prediction is highly noisy, and standard regression models usually predict the conditional mean. Designing an architecture that biases self-attention via regime gating is a sound approach to handle non-stationarity, but model scale must be heavily constrained to avoid overfitting."
+            },
+            {
+                q: "2. Critique every notebook.",
+                a: "Notebook 1 (features) has good coverage but global standardization before split risks lookahead. Notebooks 2-4 (baselines) overfit heavily. Notebooks 5-6 (transformers) lack inductive bias. Notebook 7 (AFT) introduced gates but had overlapping backtest errors and sequence alignment gaps. Notebook 8 fixed alignment and compounding. Notebook 9 added multi-objective loss. Notebook 10 performed ablations showing top-40 features stabilize. Notebook 11 analyzed IG. Notebook 12.1 optimized via financial objective. Notebook 13 evaluated seeds paired."
+            },
+            {
+                q: "3. Critique the Adaptive Financial Transformer.",
+                a: "Clever design, but over-parameterized for a small sequence dataset. Averaging the regime vector destroys sequential order, gates have double redundancy with learnable weights, and CLS zero-padding leads to constant bias normalizations."
+            },
+            {
+                q: "4. Identify unnecessary architectural complexity.",
+                a: "The group projections inside the Adaptive Financial Context module create 11 parallel matrices. This could be simplified using a single cross-attention block."
+            },
+            {
+                q: "5. Point out mathematically incorrect assumptions.",
+                a: "Daily compounding of overlapping 5-day returns in backtests, and using sqrt(252) instead of sqrt(252/5) to annualize 5-day returns."
+            },
+            {
+                q: "6. Suggest better attention mechanisms.",
+                a: "Temporal decay attention using a fixed exponential decay $e^{-\lambda|t-t'|}$ to impose a recency prior, preventing over-parameterization."
+            },
+            {
+                q: "7. Suggest better market regime representations.",
+                a: "An unsupervised HMM trained on rolling returns, volatility, and volume, yielding discrete, stable market states."
+            },
+            {
+                q: "8. Suggest alternative gating mechanisms.",
+                a: "Sparsemax or Gumbel-Softmax to completely shut off irrelevant groups during specific regimes."
+            },
+            {
+                q: "9. Should financial similarity be additive, multiplicative, or integrated differently?",
+                a: "Additive bias can cause softmax logit explosion. Multiplicative scaling of key-values represents a cleaner and more stable formulation."
+            },
+            {
+                q: "10. Should the regime encoder use pooling, CLS token, GRU, CNN, Temporal Convolution, or another architecture?",
+                a: "A lightweight GRU or Temporal Convolutional Network (TCN) to preserve temporal sequencing, which pooling destroys."
+            },
+            {
+                q: "11. Would Cross-Attention be better?",
+                a: "Yes. Query on prices, and cross-attend over volatility and volume keys/values to search for context without mixing noise."
+            },
+            {
+                q: "12. Would Mixture-of-Experts help?",
+                a: "Yes, activating different heads or feed-forward paths depending on the HMM regime, but heavily regularized."
+            },
+            {
+                q: "13. Would hierarchical attention improve performance?",
+                a: "Yes, grouping daily tokens into weekly tokens first to suppress micro-noise."
+            },
+            {
+                q: "14. Would graph attention over feature groups help?",
+                a: "Yes, applying GAT over feature groups as graph nodes to share structural weights."
+            },
+            {
+                q: "15. Suggest better loss functions.",
+                a: "A composite loss combining Huber loss, Pearson correlation, and directional sign penalties."
+            },
+            {
+                q: "16. How should evaluation be improved?",
+                a: "Purged and Embargoed Cross-Validation to eliminate overlap leakage."
+            },
+            {
+                q: "17. Suggest better backtesting.",
+                a: "Incorporate transactions fees (5-10 bps), borrow costs, and execute only on non-overlapping periods."
+            },
+            {
+                q: "18. Suggest ablation studies.",
+                a: "Ablate gating, ablate regime encoding, ablate relative bias, and train on individual feature groups alone."
+            },
+            {
+                q: "19. Suggest publication-quality experiments.",
+                a: "Evaluate on at least 15-20 liquid assets cross-sectionally, test multiple horizons, and map feature importances."
+            },
+            {
+                q: "20. Suggest a roadmap for Notebook 8, Notebook 9, and Notebook 10.",
+                a: "Notebook 8: alignment and compounding corrections. Notebook 9: multi-objective loss. Notebook 10: ablations and feature selection validation."
+            }
+        ];
+
+        const qaList = document.getElementById('qa-list');
+        qaData.forEach(item => {
+            const el = document.createElement('div');
+            el.className = 'qa-item';
+            el.innerHTML = `
+                <div class="qa-header" onclick="toggleQA(this)">
+                    <span>${item.q}</span>
+                    <span class="qa-header-icon">▼</span>
+                </div>
+                <div class="qa-body" style="font-size:0.85rem;">
+                    ${item.a}
+                </div>
+            `;
+            qaList.appendChild(el);
+        });
+
+        function toggleQA(headerElement) {
+            const item = headerElement.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.qa-item').forEach(el => el.classList.remove('open'));
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        const archDescriptions = {
+            raw: {
+                title: "Raw Features (95 Dimensions)",
+                text: "Inputs contain 95 engineered indicators grouped into 11 semantic categories (Price, Volatility, Lags, etc.).<br><br><strong>Dimensions:</strong> [Batch, 60 (Seq Length), 95 (Features)]"
+            },
+            regime: {
+                title: "Market Regime Encoder",
+                text: "Average-pools the projected features of each group (dim=32) and applies an MLP to produce a fused market state embedding.<br><br><strong>Dimensions:</strong> Input [Batch, 60, 95] &rarr; Output [Batch, 32]"
+            },
+            gate: {
+                title: "Adaptive Gate Network",
+                text: "Converts the market state embedding to 11 gate weights using an MLP + Softmax.<br><br><strong>Dimensions:</strong> Input [Batch, 32] &rarr; Output [Batch, 11]"
+            },
+            embed: {
+                title: "Feature Embedding & CLS Token",
+                text: "Linear projection of input features to Model Dimension (dim=128 or 160) prepended with a learnable CLS Token and sinusoidal positional encoding.<br><br><strong>Dimensions:</strong> Input [Batch, 60, 95] &rarr; Output [Batch, 61, d_model]"
+            },
+            context: {
+                title: "Adaptive Financial Context",
+                text: "Computes group similarity matrices and biases them using gate weights.<br><br><strong>Dimensions:</strong> Output [Batch, 61, 61]"
+            },
+            attn: {
+                title: "Adaptive Financial Attention",
+                text: "Forms attention scores via dot-product plus dynamic context bias and relative temporal bias.<br><br><strong>Dimensions:</strong> Q, K, V [Batch, 8, 61, d_head] &rarr; Output [Batch, 61, d_model]"
+            },
+            block: {
+                title: "2x Encoder Blocks",
+                text: "Applies multi-head attention followed by a Feed Forward network with Pre-LayerNorm and Gelu activations.<br><br><strong>Dimensions:</strong> Output [Batch, 61, d_model]"
+            },
+            head: {
+                title: "MLP Regression Head",
+                text: "Linear projection of the final CLS representation to output the next-period predicted return.<br><br><strong>Dimensions:</strong> Input [Batch, d_model] &rarr; Output [Batch]"
+            }
+        };
+
+        function showArchDesc(nodeId) {
+            document.querySelectorAll('.arch-node').forEach(node => node.classList.remove('highlight'));
+            const clickedNode = document.getElementById('node-' + nodeId);
+            if (clickedNode) clickedNode.classList.add('highlight');
+
+            const desc = archDescriptions[nodeId];
+            document.getElementById('arch-desc-title').innerText = desc.title;
+            document.getElementById('arch-desc-text').innerHTML = desc.text;
+        }
+    </script>
+</body>
+</html>

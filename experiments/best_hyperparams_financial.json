@@ -1,0 +1,11 @@
+{
+    "lr": 2.3080534830561402e-05,
+    "wd": 0.008362068627808264,
+    "dropout": 0.0002708187359724779,
+    "seq_len": 80,
+    "d_model": 96,
+    "ff_multiplier": 4,
+    "num_heads": 8,
+    "num_layers": 2,
+    "use_top40": true
+}

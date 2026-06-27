@@ -1,0 +1,3 @@
+Model,Trading Rank,Regression Rank,Notes
+Optimized AFT (Financial),1,1,"Best trading utility (Sharpe, DA, Return) with smaller prediction error"
+Baseline AFT,2,2,Unoptimized baseline configuration

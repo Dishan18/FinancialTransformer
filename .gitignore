@@ -1,0 +1,29 @@
+# Environments and dependencies
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# LaTeX temporary files
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.blg
+*.bbl
+
+processed_data/
+
+pipeline/
+
+models/
+
+*.pth
+
+*.tex
+
+walkthrough.md
