@@ -1,5 +1,8 @@
 # Stock Return Prediction via Adaptive Financial Transformer (AFT)
 
+📄 Paper (arXiv): https://arxiv.org/abs/2606.29347
+
+💾 Software DOI: https://doi.org/10.5281/zenodo.21109642
 
 ---
 
