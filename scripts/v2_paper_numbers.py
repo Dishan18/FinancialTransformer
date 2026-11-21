@@ -58,7 +58,7 @@ for lab, m in rows:
                              "--" if zero else pm(r.DA, r.DA_ci, 1, True),
                              "--" if zero else pm(r["Sharpe@5"], r["Sharpe@5_ci"], 2),
                              "--" if zero or m not in t.index else pv(t.loc[m, "dm_zero_p"])]) + " \\\\")
-(OUT / "tab_aapl.tex").write_text("\n".join(lines) + "\n", encoding="utf-8")
+(OUT / "tab_aapl.tex").write_text("\n".join(lines) + "\n\\bottomrule\n", encoding="utf-8")
 num("aZeroMae", f(a.loc["Zero", "MAE"], 2, True)); num("aMeanMae", f(a.loc["Train mean", "MAE"], 2, True))
 num("aMeanDa", f(a.loc["Train mean", "DA"], 1, True)); num("aMeanSr", f(a.loc["Train mean", "Sharpe@5"], 2))
 num("aAftMae", f(a.loc["AFT", "MAE"], 2, True)); num("aAftSr", f(a.loc["AFT", "Sharpe@5"], 2))
@@ -121,7 +121,7 @@ for lab, m in base_rows:
              f(s21.loc[m, "LS_sharpe@5"], 2) if m in s21.index else "--",
              ict(h5, m), ict(h21, m)]
     lines.append(" & ".join(cells) + " \\\\")
-(OUT / "tab_base.tex").write_text("\n".join(lines) + "\n", encoding="utf-8")
+(OUT / "tab_base.tex").write_text("\n".join(lines) + "\n\\bottomrule\n", encoding="utf-8")
 for df, tag in ((t5, "tf"), (s5, "sf"), (s21, "st"), (h5, "hf"), (h21, "ht")):
     for lab, m in base_rows:
         if m in df.index:
@@ -150,7 +150,7 @@ for lab, m in meta_rows:
         c.append(f"{f(r.IC, 4)}")
         c.append("--" if m == "Meta: EW all" else pv(r.dIC_p))
     lines.append(" & ".join(c) + " \\\\")
-(OUT / "tab_meta.tex").write_text("\n".join(lines) + "\n", encoding="utf-8")
+(OUT / "tab_meta.tex").write_text("\n".join(lines) + "\n\\bottomrule\n", encoding="utf-8")
 num("mfEw", f(m5.loc["Meta: EW all", "IC"], 4)); num("mtEw", f(m21.loc["Meta: EW all", "IC"], 4))
 
 # ============================================================== layered system (dev vs holdout)
@@ -186,7 +186,7 @@ for h in (5, 21):
                 num(f"sys{hk}{tag}{nm}Srtw", f(src["SR@20"], 2)); num(f"sys{hk}{tag}{nm}Turn", f(src.turnover, 2))
                 num(f"sys{hk}{tag}{nm}Mdd", f(src["mdd@5"], 0, True)); num(f"sys{hk}{tag}{nm}Exp", f(src.exposure, 0, True))
     lines.append("\\midrule")
-(OUT / "tab_system.tex").write_text("\n".join(lines[:-1]) + "\n", encoding="utf-8")
+(OUT / "tab_system.tex").write_text("\n".join(lines[:-1]) + "\n\\bottomrule\n", encoding="utf-8")
 
 bf = pd.read_csv(S2 / "sp500_h5_dev_buffer.csv")
 ewq = bf[(bf.signal == "EW (models + reversals)") & (bf.rule == "quintile")].iloc[0]

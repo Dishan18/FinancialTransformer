@@ -51,3 +51,4 @@ research_v1_submitted.tex
 !results_v2/logs/*.log
 # reviewer reports of the conference submission are confidential -- keep local
 improvement.md
+paper/main_blind.pdf

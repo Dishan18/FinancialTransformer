@@ -75,13 +75,14 @@ At initialisation ($\pi_g=1/G$) both the bias and its sensitivity to the gates a
 \label{tab:aapl}
 \scriptsize
 \setlength{\tabcolsep}{2.5pt}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lccccc}
 \toprule
 Model & MAE (\%) & $R^2_{\mathrm{OS}}$ (\%) & DA (\%) & Sharpe & DM $p$ \\
 \midrule
 \input{tab_aapl.tex}
-\bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \textbf{Single stock: no learned edge; inert components} (Table~\ref{tab:aapl}). The training-mean forecast (equivalent to buy-and-hold) has MAE \aMeanMae\% and a net Sharpe ratio of \aMeanSr; directional accuracy (DA) \emph{must} be compared with its \aMeanDa\%. LSTM, GRU and DLinear are significantly \emph{worse} than the zero forecast (DM $p=\aLstmDmZeroP$, \aGruDmZeroP, \aDlinDmZeroP). The AFT has the lowest error among the neural models (MAE \aAftMae\%) but no edge over the zero forecast (DM $p=\aAftDmZeroP$) and a Sharpe ratio of only \aAftSr. Removing both attention biases leaves the AFT unchanged (paired $t$-test over seeds: MAE $p=\aAblBothMaeP$, Sharpe $p=\aAblBothSrP$), and so does removing the regime encoder and gate ($p=\aAblRegMaeP$, \aAblRegSrP) or renormalising the gate ($p=\aAblAftrMaeP$, \aAblAftrSrP). The AFT's edge over the stock \texttt{nn.TransformerEncoder} model (MAE \aTrfMae\%) therefore comes from implementation details of its attention block, not from its financial components.
@@ -98,7 +99,6 @@ Model & MAE (\%) & $R^2_{\mathrm{OS}}$ (\%) & DA (\%) & Sharpe & DM $p$ \\
 Model & 100 stocks, $h=5$ & S\&P~500, $h=5$ & S\&P~500, $h=21$ & Sharpe, $h=21$ & S\&P~500, $h=5$ & S\&P~500, $h=21$ \\
 \midrule
 \input{tab_base.tex}
-\bottomrule
 \end{tabular}
 \end{table*}
 
@@ -112,6 +112,7 @@ Model & 100 stocks, $h=5$ & S\&P~500, $h=5$ & S\&P~500, $h=21$ & Sharpe, $h=21$ 
 \label{tab:meta}
 \scriptsize
 \setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lcccc}
 \toprule
 & \multicolumn{2}{c}{$h=5$} & \multicolumn{2}{c}{$h=21$} \\
@@ -119,8 +120,8 @@ Model & 100 stocks, $h=5$ & S\&P~500, $h=5$ & S\&P~500, $h=21$ & Sharpe, $h=21$ 
 Meta-learner & IC & $p$ & IC & $p$ \\
 \midrule
 \input{tab_meta.tex}
-\bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \textbf{Learned meta-learning does not beat equal weighting} (Table~\ref{tab:meta}). None of six learned combiners outperforms equal weighting at either horizon. Weighting models by trailing realised skill is significantly \emph{worse}: skill is anti-persistent at the 63-day window. This is the forecast-combination puzzle~\cite{rapach2010} in a cross-sectional setting, and it is the meta-level counterpart of the inert AFT gate. With this little signal, estimated conditional weights add more noise than information.
@@ -136,6 +137,7 @@ Meta-learner & IC & $p$ & IC & $p$ \\
 \caption{Layered meta system on the point-in-time S\&P~500: development (2018--2022; the exposure gate needs one year of history) and sealed holdout (2023--2025). Inputs: XGBoost, ridge, MLP, 5- and 21-day reversal. Sharpe ratios of the long-short portfolio net of costs per side; turnover per rebalancing (2 = the whole book is replaced). The first row is the input with the best development Sharpe ratio.}
 \label{tab:system}
 \footnotesize
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lcccccccc}
 \toprule
 & \multicolumn{4}{c}{Development 2018--2022} & \multicolumn{4}{c}{Holdout 2023--2025} \\
@@ -144,7 +146,6 @@ System & IC & Sharpe 5\,bp & Sharpe 10\,bp & Turnover & IC & Sharpe 5\,bp & Shar
 \midrule
 \multicolumn{9}{l}{\textit{Horizon $h=5$ days}} \\
 \input{tab_system.tex}
-\bottomrule
 \end{tabular}
 \end{table*}
 
