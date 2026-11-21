@@ -41,7 +41,7 @@ called established.
 
 Large artefacts (price caches, panel tensors, about 1 GB of out-of-sample predictions, model checkpoints)
 are not in git. The out-of-sample predictions and model checkpoints are attached to
-[release v2.0.0](https://github.com/Dishan18/FinancialTransformer/releases/tag/v2.0.0) as `FinancialTransformer-v2-predictions.zip`; everything can
+[release v.2.0.0](https://github.com/Dishan18/FinancialTransformer/releases/tag/v.2.0.0) as `FinancialTransformer-v2-predictions.zip`; everything can
 be regenerated with the scripts.
 
 ## Reproducing the results

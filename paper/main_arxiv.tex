@@ -7,7 +7,7 @@
 \usepackage{microtype}
 \usepackage{url}
 \input{numbers}
-\newcommand{\releasestatement}{Code and the pre-registration are available at \url{https://github.com/Dishan18/FinancialTransformer} (archived at \url{https://doi.org/10.5281/zenodo.21109641}); all out-of-sample predictions are attached to its release v2.0.0.}
+\newcommand{\releasestatement}{Code and the pre-registration are available at \url{https://github.com/Dishan18/FinancialTransformer} (archived at \url{https://doi.org/10.5281/zenodo.21109641}); all out-of-sample predictions are attached to its release v.2.0.0.}
 
 \begin{document}
 \title{Does Regime-Gated Attention Help Stock Return Prediction?\\A Leakage-Controlled, Pre-Registered Evaluation}
@@ -34,7 +34,7 @@ A detailed, itemised audit with evidence is in the repository (\texttt{AUDIT.md}
 
 \section{Reproducibility}
 \label{app:repro}
-All experiments ran on one NVIDIA GeForce RTX 4060 Laptop GPU with PyTorch 2.11.0 (CUDA 12.8), scikit-learn 1.9.0 and XGBoost 3.2.0, with deterministic CUDA kernels wherever PyTorch provides them (the vanilla Transformer's fused attention backward pass is not deterministic). The repository contains the feature pipeline with its look-ahead test, the walk-forward runner, the research log of all development iterations (\texttt{RESEARCH\_LOG.md}), the pre-registration (\texttt{PREREGISTRATION.md}), all summary results and the log of the single holdout evaluation. The out-of-sample predictions and model checkpoints are attached to release v2.0.0 of the repository (\url{https://github.com/Dishan18/FinancialTransformer/releases/tag/v2.0.0}), and every release of the code is archived on Zenodo (\url{https://doi.org/10.5281/zenodo.21109641}).
+All experiments ran on one NVIDIA GeForce RTX 4060 Laptop GPU with PyTorch 2.11.0 (CUDA 12.8), scikit-learn 1.9.0 and XGBoost 3.2.0, with deterministic CUDA kernels wherever PyTorch provides them (the vanilla Transformer's fused attention backward pass is not deterministic). The repository contains the feature pipeline with its look-ahead test, the walk-forward runner, the research log of all development iterations (\texttt{RESEARCH\_LOG.md}), the pre-registration (\texttt{PREREGISTRATION.md}), all summary results and the log of the single holdout evaluation. The out-of-sample predictions and model checkpoints are attached to release v.2.0.0 of the repository (\url{https://github.com/Dishan18/FinancialTransformer/releases/tag/v.2.0.0}), and every release of the code is archived on Zenodo (\url{https://doi.org/10.5281/zenodo.21109641}).
 
 \input{refs}
 \end{document}
