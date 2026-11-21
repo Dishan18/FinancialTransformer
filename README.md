@@ -2,7 +2,7 @@
 
 **A leakage-controlled, pre-registered evaluation of the Adaptive Financial Transformer (AFT)**
 
-📄 Paper (arXiv, v2): https://arxiv.org/abs/2606.29347 · 💾 Software DOI: https://doi.org/10.5281/zenodo.21109642
+📄 Paper (arXiv, v2): https://arxiv.org/abs/2606.29347 · 💾 Software DOI (all versions): https://doi.org/10.5281/zenodo.21109641
 
 > **Version 2 supersedes version 1.** The v1 preprint and the v1 version of this repository reported
 > results that its experiments did not support: baseline confidence intervals and ablation numbers that no
@@ -40,12 +40,14 @@ called established.
 | `00_…`–`14_…ipynb`, `experiments/`, `guide.html` | The original v1 exploration, kept for provenance (superseded) |
 
 Large artefacts (price caches, panel tensors, about 1 GB of out-of-sample predictions, model checkpoints)
-are not in git. They are published with the Zenodo release and can all be regenerated with the scripts.
+are not in git. The out-of-sample predictions and model checkpoints are attached to
+[release v2.0.0](https://github.com/Dishan18/FinancialTransformer/releases/tag/v2.0.0) as `FinancialTransformer-v2-predictions.zip`; everything can
+be regenerated with the scripts.
 
 ## Reproducing the results
 
 Python 3.11 with [`requirements-repro.txt`](requirements-repro.txt) (CUDA build of PyTorch 2.11). Each runner
-skips work that is already done, and CUDA kernels are deterministic.
+skips work that is already done, and CUDA kernels are deterministic wherever PyTorch provides them.
 
 ```bash
 # --- panel study (v2) ---

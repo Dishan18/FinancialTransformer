@@ -1,0 +1,20 @@
+{
+  "upload_type": "software",
+  "title": "FinancialTransformer: code for \"Does Regime-Gated Attention Help Stock Return Prediction? A Leakage-Controlled, Pre-Registered Evaluation\"",
+  "creators": [
+    {
+      "name": "Sarkar, Dishan",
+      "affiliation": "Birla Institute of Technology, Mesra",
+      "orcid": "0009-0002-8672-6680"
+    }
+  ],
+  "description": "<p>Code, pre-registration, research log, audit and summary results for \"Does Regime-Gated Attention Help Stock Return Prediction? A Leakage-Controlled, Pre-Registered Evaluation\" (arXiv:2606.29347). Version 2 supersedes version 1, whose reported results were not supported by its experiments; see AUDIT.md. The out-of-sample predictions and model checkpoints are attached to the corresponding GitHub release. Raw price data are not redistributed; the included scripts download them from Yahoo Finance.</p>",
+  "keywords": ["stock return prediction", "transformer", "attention", "walk-forward evaluation", "pre-registration", "S&P 500"],
+  "related_identifiers": [
+    {
+      "identifier": "arXiv:2606.29347",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-preprint"
+    }
+  ]
+}

@@ -29,7 +29,7 @@ models/
 walkthrough.md
 
 
-# ---------------------------------------------------------------- v2 (large, regenerable artefacts -> Zenodo)
+# ---------------------------------------------------------------- v2 (large, regenerable artefacts -> GitHub release asset)
 !paper/*.tex
 paper/*.zip
 paper/*.aux
