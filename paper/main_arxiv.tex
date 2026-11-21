@@ -34,7 +34,7 @@ A detailed, itemised audit with evidence is in the repository (\texttt{AUDIT.md}
 
 \section{Reproducibility}
 \label{app:repro}
-All experiments ran on one NVIDIA GeForce RTX 4060 Laptop GPU with PyTorch 2.11.0 (CUDA 12.8), scikit-learn 1.9.0 and XGBoost 3.2.0, with deterministic CUDA kernels. The repository contains the feature pipeline with its look-ahead test, the walk-forward runner, the research log of all development iterations (\texttt{RESEARCH\_LOG.md}), the pre-registration (\texttt{PREREGISTRATION.md}), all summary results and the log of the single holdout evaluation. The out-of-sample predictions and model checkpoints are archived on Zenodo (\url{https://doi.org/10.5281/zenodo.21109642}).
+All experiments ran on one NVIDIA GeForce RTX 4060 Laptop GPU with PyTorch 2.11.0 (CUDA 12.8), scikit-learn 1.9.0 and XGBoost 3.2.0, with deterministic CUDA kernels wherever PyTorch provides them (the vanilla Transformer's fused attention backward pass is not deterministic). The repository contains the feature pipeline with its look-ahead test, the walk-forward runner, the research log of all development iterations (\texttt{RESEARCH\_LOG.md}), the pre-registration (\texttt{PREREGISTRATION.md}), all summary results and the log of the single holdout evaluation. The out-of-sample predictions and model checkpoints are archived on Zenodo (\url{https://doi.org/10.5281/zenodo.21109642}).
 
 \input{refs}
 \end{document}
