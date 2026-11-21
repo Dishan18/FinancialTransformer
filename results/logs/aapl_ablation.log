@@ -1,0 +1,37 @@
+AAPL rows=2721 train=1820 val=403 test=409
+  [AAPL] AFT -regime/gate       seed 42    params  291307  epochs 11 (  5.3s)  test MAE 0.03098  DA 0.5672
+  [AAPL] AFT -regime/gate       seed 101   params  291307  epochs 14 (  6.2s)  test MAE 0.03311  DA 0.4425
+  [AAPL] AFT -regime/gate       seed 2023  params  291307  epochs 12 (  5.5s)  test MAE 0.03126  DA 0.4963
+  [AAPL] AFT -regime/gate       seed 777   params  291307  epochs 14 ( 18.1s)  test MAE 0.03314  DA 0.4425
+  [AAPL] AFT -regime/gate       seed 999   params  291307  epochs 14 ( 23.3s)  test MAE 0.03475  DA 0.4377
+  [AAPL] AFT -fin. context      seed 42    params  287891  epochs 14 ( 13.5s)  test MAE 0.03215  DA 0.5183
+  [AAPL] AFT -fin. context      seed 101   params  287891  epochs 11 (  3.4s)  test MAE 0.03116  DA 0.5134
+  [AAPL] AFT -fin. context      seed 2023  params  287891  epochs 10 (  3.2s)  test MAE 0.03090  DA 0.5721
+  [AAPL] AFT -fin. context      seed 777   params  287891  epochs 10 (  3.4s)  test MAE 0.03203  DA 0.4670
+  [AAPL] AFT -fin. context      seed 999   params  287891  epochs 14 ( 18.1s)  test MAE 0.03120  DA 0.5208
+  [AAPL] AFT -temporal bias     seed 42    params  371205  epochs 14 ( 28.8s)  test MAE 0.03218  DA 0.5159
+  [AAPL] AFT -temporal bias     seed 101   params  371205  epochs 11 ( 25.4s)  test MAE 0.03116  DA 0.5134
+  [AAPL] AFT -temporal bias     seed 2023  params  371205  epochs 10 ( 21.6s)  test MAE 0.03089  DA 0.5721
+  [AAPL] AFT -temporal bias     seed 777   params  371205  epochs 10 ( 21.4s)  test MAE 0.03202  DA 0.4670
+  [AAPL] AFT -temporal bias     seed 999   params  371205  epochs 14 ( 29.4s)  test MAE 0.03122  DA 0.5110
+  [AAPL] AFT -both biases       seed 42    params  285953  epochs 14 ( 15.7s)  test MAE 0.03220  DA 0.5159
+  [AAPL] AFT -both biases       seed 101   params  285953  epochs 11 ( 12.0s)  test MAE 0.03117  DA 0.5134
+  [AAPL] AFT -both biases       seed 2023  params  285953  epochs 10 ( 10.8s)  test MAE 0.03089  DA 0.5721
+  [AAPL] AFT -both biases       seed 777   params  285953  epochs 10 ( 11.7s)  test MAE 0.03203  DA 0.4645
+  [AAPL] AFT -both biases       seed 999   params  285953  epochs 14 ( 16.0s)  test MAE 0.03120  DA 0.5183
+  [AAPL] AFT +composite loss    seed 42    params  373143  epochs  9 ( 23.0s)  test MAE 0.03153  DA 0.4988
+  [AAPL] AFT +composite loss    seed 101   params  373143  epochs 12 ( 28.8s)  test MAE 0.03202  DA 0.5379
+  [AAPL] AFT +composite loss    seed 2023  params  373143  epochs 10 ( 24.2s)  test MAE 0.03271  DA 0.4377
+  [AAPL] AFT +composite loss    seed 777   params  373143  epochs  9 ( 22.4s)  test MAE 0.03484  DA 0.4548
+  [AAPL] AFT +composite loss    seed 999   params  373143  epochs 11 ( 27.1s)  test MAE 0.03710  DA 0.4817
+  [AAPL] AFT top-40             seed 42    params  360823  epochs 16 ( 37.8s)  test MAE 0.03210  DA 0.5012
+  [AAPL] AFT top-40             seed 101   params  360823  epochs 11 ( 26.5s)  test MAE 0.03147  DA 0.5575
+  [AAPL] AFT top-40             seed 2023  params  360823  epochs 11 ( 23.8s)  test MAE 0.03211  DA 0.5306
+  [AAPL] AFT top-40             seed 777   params  360823  epochs 15 ( 31.8s)  test MAE 0.03204  DA 0.5623
+  [AAPL] AFT top-40             seed 999   params  360823  epochs 12 ( 25.2s)  test MAE 0.03741  DA 0.4670
+  [AAPL] AFT-R (renorm. gate)   seed 42    params  373143  epochs 16 ( 37.1s)  test MAE 0.03215  DA 0.5086
+  [AAPL] AFT-R (renorm. gate)   seed 101   params  373143  epochs 11 ( 26.5s)  test MAE 0.03126  DA 0.5012
+  [AAPL] AFT-R (renorm. gate)   seed 2023  params  373143  epochs 10 ( 23.1s)  test MAE 0.03088  DA 0.5721
+  [AAPL] AFT-R (renorm. gate)   seed 777   params  373143  epochs 10 ( 23.1s)  test MAE 0.03191  DA 0.4670
+  [AAPL] AFT-R (renorm. gate)   seed 999   params  373143  epochs 12 ( 26.2s)  test MAE 0.03321  DA 0.4548
+done ablation

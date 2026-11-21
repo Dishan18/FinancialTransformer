@@ -1,0 +1,4 @@
+metasystem holdout evaluated: {'panel': 'sp500', 'horizon': 21, 'models': 'XGBoost,Ridge,MLP', 'factors': 'rev5,rev21', 'unseal': True, 'tag': ''}
+metasystem holdout evaluated: {'panel': 'sp500', 'horizon': 5, 'models': 'XGBoost,Ridge,MLP', 'factors': 'rev5,rev21', 'unseal': True, 'tag': ''}
+holdout evaluated: models=XGBoost,Ridge,MLP,XGBoost-IC,Transformer_s5,AFT_s5,AFT-R_s5
+holdout evaluated: models=XGBoost,Ridge,MLP,XGBoost-IC

@@ -1,0 +1,11 @@
+fold rows 0-475-578: train 391 val 103 (2015-06-23 .. 2017-06-14)
+fold rows 680-1155-1258: train 470 val 103 (2017-11-08 .. 2020-02-27)
+fold rows 1360-1835-1938: train 470 val 103 (2020-07-24 .. 2022-11-07)
+trial  0 COMPLETE value=0.00153 params={"lr": 0.0001025350969016849, "wd": 0.006351221010640704, "dropout": 0.292797576724562, "seq_len": 20, "d_model": 192, "ff_multiplier": 2, "num_heads": 8, "num_layers": 3, "use_top40": false}
+trial  1 COMPLETE value=0.00174 params={"lr": 0.0004480975918214954, "wd": 3.6138942712165278e-06, "dropout": 0.11685785941408727, "seq_len": 60, "d_model": 160, "ff_multiplier": 4, "num_heads": 4, "num_layers": 2, "use_top40": false}
+trial  2 COMPLETE value=0.00279 params={"lr": 2.1348999901951964e-05, "wd": 9.565499215943819e-05, "dropout": 0.013755408446087358, "seq_len": 20, "d_model": 160, "ff_multiplier": 2, "num_heads": 8, "num_layers": 3, "use_top40": true}
+trial  3 COMPLETE value=0.00124 params={"lr": 0.00011195109511439825, "wd": 1.2172958098369984e-05, "dropout": 0.3314950036607718, "seq_len": 60, "d_model": 128, "ff_multiplier": 4, "num_heads": 8, "num_layers": 2, "use_top40": false}
+trial  4 COMPLETE value=0.00121 params={"lr": 0.00213545417892913, "wd": 0.0003113095956122125, "dropout": 0.13235920994105968, "seq_len": 80, "d_model": 96, "ff_multiplier": 2, "num_heads": 4, "num_layers": 2, "use_top40": true}
+trial  5 PRUNED   value=0.00199 params={"lr": 1.2157000356394407e-05, "wd": 0.00035127047262708476, "dropout": 0.12574239243053068, "seq_len": 40, "d_model": 64, "ff_multiplier": 2, "num_heads": 8, "num_layers": 2, "use_top40": false}
+trial  6 COMPLETE value=0.00116 params={"lr": 0.0015109731920685012, "wd": 0.003840300419098858, "dropout": 0.12720138998874556, "seq_len": 80, "d_model": 64, "ff_multiplier": 4, "num_heads": 4, "num_layers": 3, "use_top40": true}
+trial  7 COMPLETE value=0.00121 params={"lr": 0.003959281492292679, "wd": 1.0165510266418738e-05, "dropout": 0.1988994023569542, "seq_len": 80, "d_model": 160, "ff_multiplier": 4, "num_heads": 4, "num_layers": 3, "use_top40": true}

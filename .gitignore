@@ -28,3 +28,26 @@ models/
 
 walkthrough.md
 
+
+# ---------------------------------------------------------------- v2 (large, regenerable artefacts -> Zenodo)
+!paper/*.tex
+paper/*.zip
+paper/*.aux
+paper/*.log
+paper/*.out
+data/*
+!data/sp500_constituents_2026-11-21.csv
+!data/raw2/
+data/raw2/*
+!data/raw2/quality_report.csv
+!data/raw2/quality_report_sp500.csv
+results/aapl/
+results/multiasset/
+results_v2/wf/
+results_v2/wf_*/
+README_v1.md
+research_v1_submitted.tex
+!results/logs/*.log
+!results_v2/logs/*.log
+# reviewer reports of the conference submission are confidential -- keep local
+improvement.md

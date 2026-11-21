@@ -1,0 +1,252 @@
+Ridge        fold 0 (2016) seed 0     val IC +0.0267 OOS IC +0.0075     6.1s
+D:\HFT\.venv\Lib\site-packages\xgboost\core.py:751: UserWarning: [15:59:22] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\common\error_msg.cc:62: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  return func(**kwargs)
+XGBoost      fold 0 (2016) seed 42    val IC +0.0182 OOS IC +0.0061     2.4s
+XGBoost      fold 0 (2016) seed 101   val IC +0.0238 OOS IC +0.0027     2.3s
+XGBoost      fold 0 (2016) seed 2023  val IC +0.0213 OOS IC +0.0083     2.5s
+MLP          fold 0 (2016) seed 42    val IC +0.0123 OOS IC -0.0051    26.0s
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+MLP          fold 0 (2016) seed 101   val IC +0.0198 OOS IC -0.0139    13.3s
+MLP          fold 0 (2016) seed 2023  val IC +0.0081 OOS IC +0.0161    21.8s
+Ridge        fold 1 (2017) seed 0     val IC -0.0057 OOS IC +0.0325     3.0s
+XGBoost      fold 1 (2017) seed 42    val IC +0.0016 OOS IC +0.0118     2.4s
+XGBoost      fold 1 (2017) seed 101   val IC -0.0039 OOS IC +0.0120     2.6s
+XGBoost      fold 1 (2017) seed 2023  val IC -0.0033 OOS IC +0.0164     2.5s
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+MLP          fold 1 (2017) seed 42    val IC +0.0219 OOS IC +0.0105    23.4s
+MLP          fold 1 (2017) seed 101   val IC +0.0035 OOS IC -0.0013    22.1s
+MLP          fold 1 (2017) seed 2023  val IC +0.0093 OOS IC +0.0056    20.9s
+Ridge        fold 2 (2018) seed 0     val IC +0.0267 OOS IC +0.0063     3.1s
+XGBoost      fold 2 (2018) seed 42    val IC +0.0257 OOS IC +0.0108     3.2s
+XGBoost      fold 2 (2018) seed 101   val IC +0.0225 OOS IC +0.0110     3.8s
+XGBoost      fold 2 (2018) seed 2023  val IC +0.0233 OOS IC +0.0099     3.3s
+MLP          fold 2 (2018) seed 42    val IC +0.0156 OOS IC +0.0055    32.0s
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+MLP          fold 2 (2018) seed 101   val IC +0.0136 OOS IC +0.0016    42.5s
+MLP          fold 2 (2018) seed 2023  val IC +0.0291 OOS IC +0.0098    62.1s
+Ridge        fold 3 (2019) seed 0     val IC +0.0102 OOS IC -0.0061     4.0s
+XGBoost      fold 3 (2019) seed 42    val IC +0.0131 OOS IC +0.0225     3.4s
+XGBoost      fold 3 (2019) seed 101   val IC +0.0155 OOS IC +0.0104     3.6s
+XGBoost      fold 3 (2019) seed 2023  val IC +0.0054 OOS IC +0.0175     3.9s
+MLP          fold 3 (2019) seed 42    val IC +0.0079 OOS IC +0.0149    25.6s
+MLP          fold 3 (2019) seed 101   val IC +0.0258 OOS IC -0.0072    31.9s
+MLP          fold 3 (2019) seed 2023  val IC +0.0196 OOS IC +0.0103    38.6s
+Ridge        fold 4 (2020) seed 0     val IC -0.0075 OOS IC +0.0258     4.4s
+XGBoost      fold 4 (2020) seed 42    val IC +0.0327 OOS IC +0.0340     4.1s
+XGBoost      fold 4 (2020) seed 101   val IC +0.0261 OOS IC +0.0243     3.5s
+XGBoost      fold 4 (2020) seed 2023  val IC +0.0235 OOS IC +0.0448     4.7s
+MLP          fold 4 (2020) seed 42    val IC +0.0239 OOS IC +0.0296    38.3s
+MLP          fold 4 (2020) seed 101   val IC +0.0205 OOS IC +0.0375    35.5s
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+MLP          fold 4 (2020) seed 2023  val IC +0.0404 OOS IC +0.0115    30.4s
+Ridge        fold 5 (2021) seed 0     val IC +0.0078 OOS IC +0.0300     4.8s
+XGBoost      fold 5 (2021) seed 42    val IC +0.0353 OOS IC +0.0025     5.3s
+XGBoost      fold 5 (2021) seed 101   val IC +0.0320 OOS IC +0.0095     5.9s
+XGBoost      fold 5 (2021) seed 2023  val IC +0.0291 OOS IC +0.0089     7.1s
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+MLP          fold 5 (2021) seed 42    val IC +0.0381 OOS IC +0.0217    32.7s
+MLP          fold 5 (2021) seed 101   val IC +0.0369 OOS IC +0.0073    44.8s
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+MLP          fold 5 (2021) seed 2023  val IC +0.0287 OOS IC -0.0039    44.0s
+Ridge        fold 6 (2022) seed 0     val IC +0.0319 OOS IC -0.0100     5.0s
+XGBoost      fold 6 (2022) seed 42    val IC +0.0208 OOS IC +0.0152     5.0s
+XGBoost      fold 6 (2022) seed 101   val IC +0.0201 OOS IC +0.0144     4.1s
+XGBoost      fold 6 (2022) seed 2023  val IC +0.0087 OOS IC +0.0072     4.3s
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+MLP          fold 6 (2022) seed 42    val IC +0.0233 OOS IC -0.0020    38.5s
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+MLP          fold 6 (2022) seed 101   val IC +0.0395 OOS IC -0.0135    38.5s
+MLP          fold 6 (2022) seed 2023  val IC +0.0070 OOS IC +0.0147    35.3s
+Ridge        fold 7 (2023) seed 0     val IC -0.0181 OOS IC sealed     5.5s
+XGBoost      fold 7 (2023) seed 42    val IC -0.0028 OOS IC sealed     4.1s
+XGBoost      fold 7 (2023) seed 101   val IC -0.0087 OOS IC sealed     3.9s
+XGBoost      fold 7 (2023) seed 2023  val IC -0.0016 OOS IC sealed     3.8s
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+MLP          fold 7 (2023) seed 42    val IC +0.0207 OOS IC sealed   122.0s
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+MLP          fold 7 (2023) seed 101   val IC +0.0322 OOS IC sealed   157.2s
+MLP          fold 7 (2023) seed 2023  val IC +0.0313 OOS IC sealed    59.0s
+Ridge        fold 8 (2024) seed 0     val IC +0.0082 OOS IC sealed     5.7s
+XGBoost      fold 8 (2024) seed 42    val IC +0.0087 OOS IC sealed     4.6s
+XGBoost      fold 8 (2024) seed 101   val IC +0.0020 OOS IC sealed     4.0s
+XGBoost      fold 8 (2024) seed 2023  val IC -0.0045 OOS IC sealed     4.3s
+MLP          fold 8 (2024) seed 42    val IC +0.0024 OOS IC sealed    46.6s
+MLP          fold 8 (2024) seed 101   val IC +0.0252 OOS IC sealed    57.2s
+MLP          fold 8 (2024) seed 2023  val IC +0.0097 OOS IC sealed    44.2s
+Ridge        fold 9 (2025) seed 0     val IC +0.0048 OOS IC sealed     6.1s
+XGBoost      fold 9 (2025) seed 42    val IC +0.0104 OOS IC sealed     6.3s
+XGBoost      fold 9 (2025) seed 101   val IC +0.0081 OOS IC sealed     6.1s
+XGBoost      fold 9 (2025) seed 2023  val IC +0.0160 OOS IC sealed     5.8s
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+MLP          fold 9 (2025) seed 42    val IC +0.0284 OOS IC sealed    83.3s
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3023: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[:, None]
+D:\HFT\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3024: RuntimeWarning: invalid value encountered in divide
+  c /= stddev[None, :]
+MLP          fold 9 (2025) seed 101   val IC +0.0208 OOS IC sealed    94.8s
+MLP          fold 9 (2025) seed 2023  val IC +0.0186 OOS IC sealed    49.5s
+done
+sp500 h5 exit 0

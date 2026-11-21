@@ -1,0 +1,12 @@
+# Exact environment used for the revised (v2) results. Python 3.11.9.
+# CUDA build of PyTorch:  pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0
+numpy==2.4.6
+pandas==3.0.3
+pyarrow==24.0.0
+scipy==1.17.1
+scikit-learn==1.9.0
+xgboost==3.2.0
+optuna==4.9.0
+yfinance==1.4.1
+matplotlib==3.11.0

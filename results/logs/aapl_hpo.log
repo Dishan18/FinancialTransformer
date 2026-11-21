@@ -1,0 +1,13 @@
+AAPL rows=2721 train=1820 val=403 test=409
+  [AAPL] AFT (v1 tuned cfg)     seed 42    params  316319  epochs 12 ( 28.0s)  test MAE 0.03080  DA 0.5134
+  [AAPL] AFT (v1 tuned cfg)     seed 101   params  316319  epochs 24 ( 54.9s)  test MAE 0.03384  DA 0.5232
+  [AAPL] AFT (v1 tuned cfg)     seed 2023  params  316319  epochs 21 ( 46.9s)  test MAE 0.03384  DA 0.4352
+  [AAPL] AFT (v1 tuned cfg)     seed 777   params  316319  epochs 17 ( 37.7s)  test MAE 0.03800  DA 0.4450
+  [AAPL] AFT (v1 tuned cfg)     seed 999   params  316319  epochs 13 ( 29.2s)  test MAE 0.03450  DA 0.4597
+  [AAPL] AFT-HPO (composite)    seed 42    params  504727  epochs 25 ( 54.7s)  test MAE 0.03096  DA 0.5721
+  [AAPL] AFT-HPO (composite)    seed 101   params  504727  epochs 11 ( 23.8s)  test MAE 0.03059  DA 0.5697
+  [AAPL] AFT-HPO (composite)    seed 2023  params  504727  epochs  9 ( 21.2s)  test MAE 0.03311  DA 0.5281
+  [AAPL] AFT-HPO (composite)    seed 777   params  504727  epochs 35 ( 76.7s)  test MAE 0.03143  DA 0.5330
+  [AAPL] AFT-HPO (composite)    seed 999   params  504727  epochs 16 ( 35.8s)  test MAE 0.03076  DA 0.5721
+missing D:\HFT\results\hpo\best_mse.json; skipped
+done hpo

@@ -1,0 +1,48 @@
+D:\HFT\.venv\Lib\site-packages\xgboost\core.py:751: UserWarning: [16:55:08] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\common\error_msg.cc:62: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  return func(**kwargs)
+XGBoost-IC   fold 0 (2016) seed 42    val IC +0.0242 OOS IC +0.0049     8.3s
+XGBoost-IC   fold 0 (2016) seed 101   val IC +0.0219 OOS IC -0.0016     5.9s
+XGBoost-IC   fold 0 (2016) seed 2023  val IC +0.0213 OOS IC +0.0077     6.2s
+XGBoost-IC   fold 1 (2017) seed 42    val IC +0.0046 OOS IC +0.0236     7.7s
+XGBoost-IC   fold 1 (2017) seed 101   val IC -0.0015 OOS IC +0.0107     7.8s
+XGBoost-IC   fold 1 (2017) seed 2023  val IC +0.0096 OOS IC +0.0227     7.6s
+XGBoost-IC   fold 2 (2018) seed 42    val IC +0.0251 OOS IC +0.0124     7.8s
+XGBoost-IC   fold 2 (2018) seed 101   val IC +0.0226 OOS IC +0.0109     8.2s
+XGBoost-IC   fold 2 (2018) seed 2023  val IC +0.0235 OOS IC +0.0151     7.3s
+XGBoost-IC   fold 3 (2019) seed 42    val IC +0.0131 OOS IC +0.0225     8.3s
+XGBoost-IC   fold 3 (2019) seed 101   val IC +0.0151 OOS IC +0.0088     8.7s
+XGBoost-IC   fold 3 (2019) seed 2023  val IC +0.0082 OOS IC +0.0217     8.7s
+XGBoost-IC   fold 4 (2020) seed 42    val IC +0.0292 OOS IC +0.0299     8.9s
+XGBoost-IC   fold 4 (2020) seed 101   val IC +0.0231 OOS IC +0.0264     9.0s
+XGBoost-IC   fold 4 (2020) seed 2023  val IC +0.0240 OOS IC +0.0373     8.4s
+XGBoost-IC   fold 5 (2021) seed 42    val IC +0.0322 OOS IC +0.0123     9.3s
+XGBoost-IC   fold 5 (2021) seed 101   val IC +0.0373 OOS IC +0.0105     9.6s
+XGBoost-IC   fold 5 (2021) seed 2023  val IC +0.0286 OOS IC +0.0091     9.8s
+XGBoost-IC   fold 6 (2022) seed 42    val IC +0.0208 OOS IC +0.0152    10.4s
+XGBoost-IC   fold 6 (2022) seed 101   val IC +0.0213 OOS IC +0.0128     9.1s
+XGBoost-IC   fold 6 (2022) seed 2023  val IC +0.0092 OOS IC +0.0072     9.4s
+XGBoost-IC   fold 7 (2023) seed 42    val IC +0.0225 OOS IC sealed    10.1s
+XGBoost-IC   fold 7 (2023) seed 101   val IC +0.0204 OOS IC sealed     9.9s
+XGBoost-IC   fold 7 (2023) seed 2023  val IC +0.0187 OOS IC sealed    10.0s
+XGBoost-IC   fold 8 (2024) seed 42    val IC +0.0025 OOS IC sealed    10.5s
+XGBoost-IC   fold 8 (2024) seed 101   val IC -0.0002 OOS IC sealed     9.1s
+XGBoost-IC   fold 8 (2024) seed 2023  val IC -0.0027 OOS IC sealed     9.1s
+D:\HFT\.venv\Lib\site-packages\xgboost\core.py:751: UserWarning: [19:01:34] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\common\error_msg.cc:62: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  return func(**kwargs)
+XGBoost-IC   fold 9 (2025) seed 42    val IC +0.0113 OOS IC sealed    12.9s
+XGBoost-IC   fold 9 (2025) seed 101   val IC +0.0102 OOS IC sealed    10.5s
+XGBoost-IC   fold 9 (2025) seed 2023  val IC +0.0132 OOS IC sealed     7.3s
+done
+xgbic5 exit 0

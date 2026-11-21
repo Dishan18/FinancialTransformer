@@ -1,0 +1,16 @@
+D:\HFT\.venv\Lib\site-packages\pandas\core\internals\blocks.py:347: RuntimeWarning: divide by zero encountered in log
+  result = func(self.values, **kwargs)
+look-ahead test passed at 2015-03-23 (60 stocks)
+D:\HFT\.venv\Lib\site-packages\pandas\core\internals\blocks.py:347: RuntimeWarning: divide by zero encountered in log
+  result = func(self.values, **kwargs)
+look-ahead test passed at 2018-02-12 (60 stocks)
+D:\HFT\.venv\Lib\site-packages\pandas\core\internals\blocks.py:347: RuntimeWarning: divide by zero encountered in log
+  result = func(self.values, **kwargs)
+look-ahead test passed at 2020-04-02 (60 stocks)
+D:\HFT\.venv\Lib\site-packages\pandas\core\internals\blocks.py:347: RuntimeWarning: divide by zero encountered in log
+  result = func(self.values, **kwargs)
+D:\HFT\.venv\Lib\site-packages\pandas\core\internals\blocks.py:347: RuntimeWarning: divide by zero encountered in log
+  result = func(self.values, **kwargs)
+sp500: T=4023, N=500, valid stock-days 1,390,254; universe size per date min 268 median 369 max 484
+ranks saved (4023, 500, 48)
+exit 0

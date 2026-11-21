@@ -1,0 +1,80 @@
+Ridge        fold 0 (2016) seed 0     val IC +0.0164 OOS IC -0.0105     3.5s
+D:\HFT\.venv\Lib\site-packages\xgboost\core.py:751: UserWarning: [16:26:10] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\common\error_msg.cc:62: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  return func(**kwargs)
+XGBoost      fold 0 (2016) seed 42    val IC -0.0141 OOS IC +0.0104     1.8s
+XGBoost      fold 0 (2016) seed 101   val IC +0.0083 OOS IC +0.0122     1.7s
+XGBoost      fold 0 (2016) seed 2023  val IC -0.0231 OOS IC +0.0729     1.8s
+MLP          fold 0 (2016) seed 42    val IC -0.0126 OOS IC +0.0723    13.7s
+MLP          fold 0 (2016) seed 101   val IC +0.0211 OOS IC +0.0473    20.4s
+MLP          fold 0 (2016) seed 2023  val IC -0.0033 OOS IC +0.0501    17.2s
+Ridge        fold 1 (2017) seed 0     val IC -0.0782 OOS IC +0.0362     2.7s
+XGBoost      fold 1 (2017) seed 42    val IC -0.0159 OOS IC +0.0051     3.4s
+XGBoost      fold 1 (2017) seed 101   val IC -0.0244 OOS IC +0.0262     3.2s
+XGBoost      fold 1 (2017) seed 2023  val IC -0.0227 OOS IC +0.0187     3.1s
+MLP          fold 1 (2017) seed 42    val IC +0.0355 OOS IC -0.0032    17.8s
+MLP          fold 1 (2017) seed 101   val IC +0.0369 OOS IC +0.0191    18.3s
+MLP          fold 1 (2017) seed 2023  val IC +0.0394 OOS IC +0.0398    49.7s
+Ridge        fold 2 (2018) seed 0     val IC +0.0252 OOS IC +0.0201     3.6s
+XGBoost      fold 2 (2018) seed 42    val IC +0.0137 OOS IC +0.0051     4.1s
+XGBoost      fold 2 (2018) seed 101   val IC +0.0072 OOS IC +0.0230     2.8s
+XGBoost      fold 2 (2018) seed 2023  val IC +0.0121 OOS IC +0.0215     2.6s
+MLP          fold 2 (2018) seed 42    val IC +0.0609 OOS IC -0.0013    27.7s
+MLP          fold 2 (2018) seed 101   val IC +0.0519 OOS IC +0.0019    30.5s
+MLP          fold 2 (2018) seed 2023  val IC +0.0457 OOS IC +0.0364    35.6s
+Ridge        fold 3 (2019) seed 0     val IC +0.0331 OOS IC +0.0278     4.1s
+XGBoost      fold 3 (2019) seed 42    val IC +0.0172 OOS IC +0.0201     3.0s
+XGBoost      fold 3 (2019) seed 101   val IC +0.0183 OOS IC +0.0368     2.9s
+XGBoost      fold 3 (2019) seed 2023  val IC +0.0090 OOS IC +0.0659     3.0s
+MLP          fold 3 (2019) seed 42    val IC +0.0118 OOS IC +0.0934    41.3s
+MLP          fold 3 (2019) seed 101   val IC +0.0364 OOS IC +0.0718    70.5s
+MLP          fold 3 (2019) seed 2023  val IC +0.0339 OOS IC +0.0597    59.1s
+Ridge        fold 4 (2020) seed 0     val IC +0.0263 OOS IC +0.0396     4.2s
+XGBoost      fold 4 (2020) seed 42    val IC +0.1062 OOS IC +0.0562     6.1s
+XGBoost      fold 4 (2020) seed 101   val IC +0.1057 OOS IC +0.0566     5.3s
+XGBoost      fold 4 (2020) seed 2023  val IC +0.0959 OOS IC +0.0421     5.0s
+MLP          fold 4 (2020) seed 42    val IC +0.1375 OOS IC +0.0603    40.3s
+MLP          fold 4 (2020) seed 101   val IC +0.1404 OOS IC +0.0107    36.1s
+MLP          fold 4 (2020) seed 2023  val IC +0.1429 OOS IC +0.0192    35.9s
+Ridge        fold 5 (2021) seed 0     val IC +0.0112 OOS IC +0.0721     4.8s
+XGBoost      fold 5 (2021) seed 42    val IC +0.0689 OOS IC +0.0178     6.7s
+XGBoost      fold 5 (2021) seed 101   val IC +0.0706 OOS IC +0.0242     7.5s
+XGBoost      fold 5 (2021) seed 2023  val IC +0.0654 OOS IC +0.0162     6.3s
+MLP          fold 5 (2021) seed 42    val IC +0.1054 OOS IC -0.0871    68.8s
+MLP          fold 5 (2021) seed 101   val IC +0.0292 OOS IC -0.0248    48.8s
+MLP          fold 5 (2021) seed 2023  val IC +0.0688 OOS IC -0.0271    59.0s
+Ridge        fold 6 (2022) seed 0     val IC +0.0647 OOS IC +0.0220     4.8s
+XGBoost      fold 6 (2022) seed 42    val IC +0.0286 OOS IC +0.0210     4.5s
+XGBoost      fold 6 (2022) seed 101   val IC +0.0240 OOS IC +0.0164     4.0s
+XGBoost      fold 6 (2022) seed 2023  val IC +0.0170 OOS IC +0.0149     3.9s
+MLP          fold 6 (2022) seed 42    val IC -0.0381 OOS IC +0.0205    69.4s
+MLP          fold 6 (2022) seed 101   val IC -0.0077 OOS IC -0.0024    49.8s
+MLP          fold 6 (2022) seed 2023  val IC -0.0614 OOS IC +0.0110    40.5s
+Ridge        fold 7 (2023) seed 0     val IC -0.0026 OOS IC sealed     5.7s
+XGBoost      fold 7 (2023) seed 42    val IC +0.0182 OOS IC sealed     4.7s
+XGBoost      fold 7 (2023) seed 101   val IC +0.0075 OOS IC sealed     4.1s
+XGBoost      fold 7 (2023) seed 2023  val IC +0.0144 OOS IC sealed     4.2s
+MLP          fold 7 (2023) seed 42    val IC +0.0313 OOS IC sealed    74.1s
+MLP          fold 7 (2023) seed 101   val IC +0.0004 OOS IC sealed    64.3s
+MLP          fold 7 (2023) seed 2023  val IC +0.0371 OOS IC sealed   101.0s
+Ridge        fold 8 (2024) seed 0     val IC -0.0166 OOS IC sealed     6.1s
+XGBoost      fold 8 (2024) seed 42    val IC -0.0303 OOS IC sealed     4.2s
+XGBoost      fold 8 (2024) seed 101   val IC -0.0014 OOS IC sealed     4.1s
+XGBoost      fold 8 (2024) seed 2023  val IC +0.0044 OOS IC sealed     4.0s
+MLP          fold 8 (2024) seed 42    val IC +0.0210 OOS IC sealed   126.8s
+MLP          fold 8 (2024) seed 101   val IC -0.0085 OOS IC sealed   102.6s
+MLP          fold 8 (2024) seed 2023  val IC +0.0155 OOS IC sealed    44.4s
+Ridge        fold 9 (2025) seed 0     val IC -0.0128 OOS IC sealed     7.2s
+XGBoost      fold 9 (2025) seed 42    val IC -0.0137 OOS IC sealed     4.4s
+XGBoost      fold 9 (2025) seed 101   val IC +0.0047 OOS IC sealed     4.5s
+XGBoost      fold 9 (2025) seed 2023  val IC +0.0060 OOS IC sealed     4.4s
+MLP          fold 9 (2025) seed 42    val IC -0.0011 OOS IC sealed    62.0s
+MLP          fold 9 (2025) seed 101   val IC -0.0019 OOS IC sealed    62.3s
+MLP          fold 9 (2025) seed 2023  val IC +0.0076 OOS IC sealed    49.8s
+done
+sp500 h21 exit 0

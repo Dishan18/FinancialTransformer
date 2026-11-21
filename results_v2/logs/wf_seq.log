@@ -1,0 +1,31 @@
+LSTM         fold 0 (2016) seed 42    val IC +0.0405 OOS IC -0.0407     8.6s
+LSTM         fold 0 (2016) seed 101   val IC +0.0087 OOS IC -0.0196     6.1s
+LSTM         fold 0 (2016) seed 2023  val IC +0.0235 OOS IC +0.0137     4.9s
+GRU          fold 0 (2016) seed 42    val IC +0.0543 OOS IC -0.0250     4.7s
+GRU          fold 0 (2016) seed 101   val IC +0.0583 OOS IC -0.0104     8.2s
+GRU          fold 0 (2016) seed 2023  val IC +0.0469 OOS IC -0.0360     4.6s
+D:\HFT\.venv\Lib\site-packages\torch\autograd\graph.py:869: UserWarning: Memory Efficient attention defaults to a non-deterministic algorithm. To explicitly enable determinism call torch.use_deterministic_algorithms(True, warn_only=False). (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\native\transformers\cuda\attention_backward.cu:902.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+Transformer  fold 0 (2016) seed 42    val IC +0.0473 OOS IC -0.0109    33.9s
+Transformer  fold 0 (2016) seed 101   val IC +0.0372 OOS IC -0.0039    36.0s
+Transformer  fold 0 (2016) seed 2023  val IC +0.0499 OOS IC -0.0098    33.3s
+AFT          fold 0 (2016) seed 42    val IC +0.0372 OOS IC -0.0221    48.5s
+AFT          fold 0 (2016) seed 101   val IC +0.0424 OOS IC -0.0111    81.8s
+AFT          fold 0 (2016) seed 2023  val IC +0.0544 OOS IC -0.0253    38.3s
+AFT-R        fold 0 (2016) seed 42    val IC +0.0375 OOS IC -0.0229    49.1s
+AFT-R        fold 0 (2016) seed 101   val IC +0.0389 OOS IC -0.0309    81.6s
+AFT-R        fold 0 (2016) seed 2023  val IC +0.0541 OOS IC -0.0249    38.4s
+LSTM         fold 1 (2017) seed 42    val IC +0.0025 OOS IC +0.0236     8.6s
+LSTM         fold 1 (2017) seed 101   val IC +0.0025 OOS IC +0.0189     6.8s
+LSTM         fold 1 (2017) seed 2023  val IC -0.0081 OOS IC -0.0006     7.9s
+GRU          fold 1 (2017) seed 42    val IC +0.0319 OOS IC -0.0118    16.7s
+GRU          fold 1 (2017) seed 101   val IC +0.0112 OOS IC +0.0005     5.8s
+GRU          fold 1 (2017) seed 2023  val IC +0.0057 OOS IC -0.0214     9.3s
+Transformer  fold 1 (2017) seed 42    val IC -0.0088 OOS IC -0.0082    15.8s
+Transformer  fold 1 (2017) seed 101   val IC +0.0087 OOS IC +0.0146    16.4s
+Transformer  fold 1 (2017) seed 2023  val IC +0.0106 OOS IC -0.0334    17.9s
+AFT          fold 1 (2017) seed 42    val IC -0.0005 OOS IC -0.0027    60.7s
+AFT          fold 1 (2017) seed 101   val IC -0.0029 OOS IC -0.0220    38.3s
+AFT          fold 1 (2017) seed 2023  val IC -0.0160 OOS IC -0.0126    47.7s
+AFT-R        fold 1 (2017) seed 42    val IC -0.0009 OOS IC -0.0020    64.2s
+AFT-R        fold 1 (2017) seed 101   val IC -0.0045 OOS IC -0.0354    50.7s
